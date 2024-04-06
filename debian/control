@@ -18,29 +18,29 @@ Section: devel
 Build-Profiles: <!pkg.linux.notools>
 Depends: ${python3:Depends}, python3-jinja2, ${misc:Depends}
 Multi-Arch: foreign
-Description: Support files for Linux 6.7
+Description: Support files for Linux 6.8
  This package provides support files for the Linux kernel build, e.g.
  scripts to handle ABI information and for generation of build system meta
  data.
 
-Package: linux-doc-6.7
+Package: linux-doc-6.8
 Architecture: all
 Section: doc
 Build-Profiles: <!nodoc !pkg.linux.quick>
 Depends: ${misc:Depends}
 Multi-Arch: foreign
-Description: Linux kernel specific documentation for version 6.7
+Description: Linux kernel specific documentation for version 6.8
  This package provides the various README files and HTML documentation for
- the Linux kernel version 6.7.  Plenty of information, including the
+ the Linux kernel version 6.8.  Plenty of information, including the
  descriptions of various kernel subsystems, filesystems, driver-specific
  notes and the like.  An index to the documentation is installed as
- /usr/share/doc/linux-doc-6.7/html/index.html.
+ /usr/share/doc/linux-doc-6.8/html/index.html.
 
 Package: linux-doc
 Architecture: all
 Section: doc
 Build-Profiles: <!nodoc !pkg.linux.nometa !pkg.linux.quick>
-Depends: linux-doc-6.7 (= ${binary:Version}), ${misc:Depends}
+Depends: linux-doc-6.8 (= ${binary:Version}), ${misc:Depends}
 Description: Linux kernel specific documentation (meta-package)
  This package depends on the package containing the documentation for the
  latest Linux kernel.
@@ -50,11 +50,11 @@ Architecture: all
 Section: kernel
 Build-Profiles: <!pkg.linux.nosource !pkg.linux.quick>
 Depends: binutils, xz-utils, ${misc:Depends}
-Recommends: build-essential, bc, rsync, kmod, cpio, bison, flex, libelf-dev, libssl-dev, linux-config-6.7
+Recommends: build-essential, bc, rsync, kmod, cpio, bison, flex, libelf-dev, libssl-dev, linux-config-6.8
 Suggests: libncurses-dev | ncurses-dev, qtbase5-dev, pkg-config
 Multi-Arch: foreign
-Description: Linux kernel source for version 6.7 with Lingmo patches
- This package provides source code for the Linux kernel version 6.7. This
+Description: Linux kernel source for version 6.8 with Lingmo patches
+ This package provides source code for the Linux kernel version 6.8. This
  source closely tracks official Linux kernel releases.  Lingmo's
  modifications to that source consist of security fixes, bug fixes, and
  features that have already been (or are believed to be) accepted by the
@@ -63,7 +63,7 @@ Description: Linux kernel source for version 6.7 with Lingmo patches
 Package: linux-source
 Architecture: all
 Build-Profiles: <!pkg.linux.nometa !pkg.linux.nosource !pkg.linux.quick>
-Depends: linux-source-6.7 (= ${binary:Version}), ${misc:Depends}
+Depends: linux-source-6.8 (= ${binary:Version}), ${misc:Depends}
 Description: Linux kernel source (meta-package)
  This package depends on packages containing the sources of the latest
  Linux kernel.
@@ -109,13 +109,13 @@ Description: Common header files for Linux 6.8.4-rt
  linux-headers-6.8.4-(flavour) package, matching the flavour of the kernel
  you intend the build for.
 
-Package: linux-config-6.7
+Package: linux-config-6.8
 Architecture: linux-any
 Build-Profiles: <!pkg.linux.nosource>
 Depends: ${misc:Depends}
-Recommends: linux-source-6.7
+Recommends: linux-source-6.8
 Multi-Arch: same
-Description: Lingmo kernel configurations for Linux 6.7
+Description: Lingmo kernel configurations for Linux 6.8
  This package contains the configuration files used to build the official
  Lingmo kernel files, but without references to Lingmo's signing
  certificates.
@@ -172,11 +172,11 @@ Package: linux-perf
 Architecture: alpha amd64 arm64 armel armhf hppa i386 loong64 mips mips64 mips64el mips64r6 mips64r6el mipsel mipsn32 mipsn32el mipsn32r6 mipsn32r6el mipsr6 mipsr6el powerpc ppc64 ppc64el riscv64 s390 s390x sh4 sparc sparc64
 Section: devel
 Build-Profiles: <!nopython !pkg.linux.mintools !pkg.linux.notools>
-Provides: linux-tools-6.7
+Provides: linux-tools-6.8
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, ${python3:Depends}
-Suggests: linux-doc-6.7
-Replaces: linux-tools-6.7
-Conflicts: linux-tools-6.7
+Suggests: linux-doc-6.8
+Replaces: linux-tools-6.8
+Conflicts: linux-tools-6.8
 Description: Performance analysis tools for Linux
  This package contains the 'perf' performance analysis tools for Linux.
 
@@ -239,12 +239,12 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Multi-Arch: foreign
 Description: Kbuild infrastructure for Linux 6.8.4
  This package provides the kbuild infrastructure for the headers packages
- for Linux kernel version 6.7.
+ for Linux kernel version 6.8.
 
 Package: linux-headers-6.8.4-alpha-generic
 Architecture: alpha
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-alpha-generic (= ${binary:Version}) | linux-image-6.8.4-alpha-generic (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-alpha-generic (= ${binary:Version}) | linux-image-6.8.4-alpha-generic-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-alpha-generic
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-alpha-generic, generally used for building out-of-tree
@@ -258,10 +258,10 @@ Architecture: alpha
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [alpha] | linux-initramfs-tool [alpha]
 Recommends: firmware-linux-free, apparmor [alpha]
-Suggests: linux-doc-6.7, debian-kernel-handbook, aboot [alpha], fdutils [alpha]
+Suggests: linux-doc-6.8, debian-kernel-handbook, aboot [alpha], fdutils [alpha]
 Breaks: fwupdate (<< 12-7) [alpha], wireless-regdb (<< 2019.06.03-1~) [alpha], initramfs-tools (<< 0.120+deb8u2) [alpha]
-Description: Linux 6.7 for Alpha
- The Linux kernel 6.7 and modules for use on DEC Alpha systems with
+Description: Linux 6.8 for Alpha
+ The Linux kernel 6.8 and modules for use on DEC Alpha systems with
  extended kernel start address (Wildfire, Titan, Marvel).
 
 Package: linux-image-alpha-generic
@@ -792,7 +792,7 @@ Description: SRM modules
 Package: linux-headers-6.8.4-alpha-smp
 Architecture: alpha
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-alpha-smp (= ${binary:Version}) | linux-image-6.8.4-alpha-smp (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-alpha-smp (= ${binary:Version}) | linux-image-6.8.4-alpha-smp-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-alpha-smp
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-alpha-smp, generally used for building out-of-tree
@@ -806,10 +806,10 @@ Architecture: alpha
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [alpha] | linux-initramfs-tool [alpha]
 Recommends: firmware-linux-free, apparmor [alpha]
-Suggests: linux-doc-6.7, debian-kernel-handbook, aboot [alpha], fdutils [alpha]
+Suggests: linux-doc-6.8, debian-kernel-handbook, aboot [alpha], fdutils [alpha]
 Breaks: fwupdate (<< 12-7) [alpha], wireless-regdb (<< 2019.06.03-1~) [alpha], initramfs-tools (<< 0.120+deb8u2) [alpha]
-Description: Linux 6.7 for Alpha SMP
- The Linux kernel 6.7 and modules for use on DEC Alpha SMP systems with
+Description: Linux 6.8 for Alpha SMP
+ The Linux kernel 6.8 and modules for use on DEC Alpha SMP systems with
  extended kernel start address (Wildfire, Titan, Marvel).
 
 Package: linux-image-alpha-smp
@@ -861,7 +861,7 @@ Description: Template for signed linux-image packages for amd64
 Package: linux-headers-6.8.4-amd64
 Architecture: amd64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-amd64 (= ${binary:Version}) | linux-image-6.8.4-amd64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-amd64 (= ${binary:Version}) | linux-image-6.8.4-amd64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-amd64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-amd64, generally used for building out-of-tree kernel
@@ -869,17 +869,17 @@ Description: Header files for Linux 6.8.4-amd64
  /usr/src/linux-headers-6.8.4-amd64, and can be used for building modules
  that load into the kernel provided by the linux-image-6.8.4-amd64 package.
 
-Package: linux-image-6.8.4-amd64
+Package: linux-image-6.8.4-amd64-unsigned
 Architecture: amd64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [amd64] | linux-initramfs-tool [amd64]
 Recommends: firmware-linux-free, apparmor [amd64]
-Suggests: linux-doc-6.7, debian-kernel-handbook, grub-pc [amd64] | grub-efi-amd64 [amd64] | extlinux [amd64]
+Suggests: linux-doc-6.8, debian-kernel-handbook, grub-pc [amd64] | grub-efi-amd64 [amd64] | extlinux [amd64]
 Replaces: linux-image-6.8.4-amd64
 Breaks: fwupdate (<< 12-7) [amd64], wireless-regdb (<< 2019.06.03-1~) [amd64], initramfs-tools (<< 0.120+deb8u2) [amd64]
 Conflicts: linux-image-6.8.4-amd64
-Description: Linux 6.7 for 64-bit PCs
- The Linux kernel 6.7 and modules for use on PCs with AMD64, Intel 64 or
+Description: Linux 6.8 for 64-bit PCs
+ The Linux kernel 6.8 and modules for use on PCs with AMD64, Intel 64 or
  VIA Nano processors.
 
 Package: linux-image-6.8.4-amd64-dbg
@@ -906,7 +906,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: kernel-image
 Kernel-Version: 6.8.4-amd64
 Description: Linux kernel image and core modules for the Lingmo installer
@@ -919,7 +919,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-modules, nic-extra-modules
 Depends: kernel-image-6.8.4-amd64-di, nic-shared-modules-6.8.4-amd64-di, i2c-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di, mtd-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -932,7 +932,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-wireless-modules
 Depends: kernel-image-6.8.4-amd64-di, nic-shared-modules-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di, mmc-core-modules-6.8.4-amd64-di, pcmcia-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di, rfkill-modules-6.8.4-amd64-di, crypto-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -945,7 +945,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-shared-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di, i2c-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -958,7 +958,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: serial-modules
 Depends: kernel-image-6.8.4-amd64-di, pcmcia-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -970,7 +970,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: usb-serial-modules
 Depends: kernel-image-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -982,7 +982,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: ppp-modules
 Depends: kernel-image-6.8.4-amd64-di, serial-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -994,7 +994,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: pata-modules
 Depends: kernel-image-6.8.4-amd64-di, ata-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1006,7 +1006,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: cdrom-core-modules
 Depends: kernel-image-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1018,7 +1018,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: firewire-core-modules
 Depends: kernel-image-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1030,7 +1030,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: scsi-core-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1042,7 +1042,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: scsi-modules
 Depends: kernel-image-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di, cdrom-core-modules-6.8.4-amd64-di, ata-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1054,7 +1054,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: scsi-nic-modules
 Depends: scsi-modules-6.8.4-amd64-di, nic-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1066,7 +1066,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: loop-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1078,7 +1078,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: btrfs-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di, md-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1090,7 +1090,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: ext4-modules, ext2-modules, ext3-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1103,7 +1103,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: isofs-modules
 Depends: kernel-image-6.8.4-amd64-di, cdrom-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1115,7 +1115,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: jfs-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1127,7 +1127,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: xfs-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1139,7 +1139,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: fat-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1151,7 +1151,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: squashfs-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1163,7 +1163,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: udf-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di, cdrom-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1175,7 +1175,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: f2fs-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1187,7 +1187,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: md-modules
 Depends: kernel-image-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1199,7 +1199,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: multipath-modules
 Depends: kernel-image-6.8.4-amd64-di, md-modules-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1211,7 +1211,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: usb-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1223,7 +1223,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: usb-storage-modules
 Depends: kernel-image-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1235,7 +1235,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: pcmcia-storage-modules
 Depends: kernel-image-6.8.4-amd64-di, cdrom-core-modules-6.8.4-amd64-di, pcmcia-modules-6.8.4-amd64-di, ata-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1247,7 +1247,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: fb-modules
 Depends: kernel-image-6.8.4-amd64-di, i2c-modules-6.8.4-amd64-di, input-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1259,7 +1259,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: input-modules
 Depends: kernel-image-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di, i2c-modules-6.8.4-amd64-di, rfkill-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1271,7 +1271,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: event-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1283,7 +1283,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: mouse-modules
 Depends: kernel-image-6.8.4-amd64-di, event-modules-6.8.4-amd64-di, input-modules-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1295,7 +1295,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-pcmcia-modules
 Depends: kernel-image-6.8.4-amd64-di, nic-shared-modules-6.8.4-amd64-di, nic-wireless-modules-6.8.4-amd64-di, pcmcia-modules-6.8.4-amd64-di, mmc-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1307,7 +1307,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: pcmcia-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1319,7 +1319,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-usb-modules
 Depends: kernel-image-6.8.4-amd64-di, nic-shared-modules-6.8.4-amd64-di, nic-wireless-modules-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1331,7 +1331,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: sata-modules
 Depends: kernel-image-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di, ata-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1343,7 +1343,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: acpi-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1355,7 +1355,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: i2c-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1367,7 +1367,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: crc-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1379,7 +1379,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: crypto-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1391,7 +1391,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: crypto-dm-modules
 Depends: kernel-image-6.8.4-amd64-di, md-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1403,7 +1403,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: efi-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1415,7 +1415,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: ata-modules
 Depends: kernel-image-6.8.4-amd64-di, scsi-core-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1428,7 +1428,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: mmc-core-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1440,7 +1440,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: mmc-modules
 Depends: kernel-image-6.8.4-amd64-di, mmc-core-modules-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1453,7 +1453,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nbd-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1466,7 +1466,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: speakup-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1478,7 +1478,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: uinput-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1490,7 +1490,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: sound-modules
 Depends: kernel-image-6.8.4-amd64-di, i2c-modules-6.8.4-amd64-di, usb-modules-6.8.4-amd64-di, pcmcia-modules-6.8.4-amd64-di, firewire-core-modules-6.8.4-amd64-di, crc-modules-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1502,7 +1502,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: mtd-core-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1514,7 +1514,7 @@ Package-Type: udeb
 Architecture: amd64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: rfkill-modules
 Depends: kernel-image-6.8.4-amd64-di
 Kernel-Version: 6.8.4-amd64
@@ -1524,7 +1524,7 @@ Description: rfkill modules
 Package: linux-headers-6.8.4-cloud-amd64
 Architecture: amd64
 Build-Profiles: <!pkg.linux.nokernel>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-cloud-amd64 (= ${binary:Version}) | linux-image-6.8.4-cloud-amd64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-cloud-amd64 (= ${binary:Version}) | linux-image-6.8.4-cloud-amd64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-cloud-amd64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-cloud-amd64, generally used for building out-of-tree
@@ -1533,17 +1533,17 @@ Description: Header files for Linux 6.8.4-cloud-amd64
  modules that load into the kernel provided by the
  linux-image-6.8.4-cloud-amd64 package.
 
-Package: linux-image-6.8.4-cloud-amd64
+Package: linux-image-6.8.4-cloud-amd64-unsigned
 Architecture: amd64
 Build-Profiles: <!pkg.linux.nokernel>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [amd64] | linux-initramfs-tool [amd64]
 Recommends: firmware-linux-free, apparmor [amd64]
-Suggests: linux-doc-6.7, debian-kernel-handbook, grub-pc [amd64] | grub-efi-amd64 [amd64] | extlinux [amd64]
+Suggests: linux-doc-6.8, debian-kernel-handbook, grub-pc [amd64] | grub-efi-amd64 [amd64] | extlinux [amd64]
 Replaces: linux-image-6.8.4-cloud-amd64
 Breaks: fwupdate (<< 12-7) [amd64], wireless-regdb (<< 2019.06.03-1~) [amd64], initramfs-tools (<< 0.120+deb8u2) [amd64]
 Conflicts: linux-image-6.8.4-cloud-amd64
-Description: Linux 6.7 for x86-64 cloud
- The Linux kernel 6.7 and modules for use on cloud platforms including
+Description: Linux 6.8 for x86-64 cloud
+ The Linux kernel 6.8 and modules for use on cloud platforms including
  Amazon EC2, Microsoft Azure, and Google Compute Engine.
 
 Package: linux-image-6.8.4-cloud-amd64-dbg
@@ -1568,7 +1568,7 @@ Description: Debugging symbols for Linux cloud-amd64 configuration (meta-package
 Package: linux-headers-6.8.4-rt-amd64
 Architecture: amd64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-amd64 (= ${binary:Version}) | linux-image-6.8.4-rt-amd64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-amd64 (= ${binary:Version}) | linux-image-6.8.4-rt-amd64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-rt-amd64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-rt-amd64, generally used for building out-of-tree
@@ -1577,17 +1577,17 @@ Description: Header files for Linux 6.8.4-rt-amd64
  modules that load into the kernel provided by the
  linux-image-6.8.4-rt-amd64 package.
 
-Package: linux-image-6.8.4-rt-amd64
+Package: linux-image-6.8.4-rt-amd64-unsigned
 Architecture: amd64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [amd64] | linux-initramfs-tool [amd64]
 Recommends: firmware-linux-free, apparmor [amd64]
-Suggests: linux-doc-6.7, debian-kernel-handbook, grub-pc [amd64] | grub-efi-amd64 [amd64] | extlinux [amd64]
+Suggests: linux-doc-6.8, debian-kernel-handbook, grub-pc [amd64] | grub-efi-amd64 [amd64] | extlinux [amd64]
 Replaces: linux-image-6.8.4-rt-amd64
 Breaks: fwupdate (<< 12-7) [amd64], wireless-regdb (<< 2019.06.03-1~) [amd64], initramfs-tools (<< 0.120+deb8u2) [amd64]
 Conflicts: linux-image-6.8.4-rt-amd64
-Description: Linux 6.7 for 64-bit PCs, PREEMPT_RT
- The Linux kernel 6.7 and modules for use on PCs with AMD64, Intel 64 or
+Description: Linux 6.8 for 64-bit PCs, PREEMPT_RT
+ The Linux kernel 6.8 and modules for use on PCs with AMD64, Intel 64 or
  VIA Nano processors.
  .
  This kernel includes the PREEMPT_RT realtime patch set.
@@ -1622,7 +1622,7 @@ Description: Template for signed linux-image packages for arm64
 Package: linux-headers-6.8.4-arm64
 Architecture: arm64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-arm64 (= ${binary:Version}) | linux-image-6.8.4-arm64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-arm64 (= ${binary:Version}) | linux-image-6.8.4-arm64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-arm64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-arm64, generally used for building out-of-tree kernel
@@ -1630,17 +1630,17 @@ Description: Header files for Linux 6.8.4-arm64
  /usr/src/linux-headers-6.8.4-arm64, and can be used for building modules
  that load into the kernel provided by the linux-image-6.8.4-arm64 package.
 
-Package: linux-image-6.8.4-arm64
+Package: linux-image-6.8.4-arm64-unsigned
 Architecture: arm64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [arm64] | linux-initramfs-tool [arm64]
 Recommends: firmware-linux-free, apparmor [arm64]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Replaces: linux-image-6.8.4-arm64
 Breaks: fwupdate (<< 12-7) [arm64], wireless-regdb (<< 2019.06.03-1~) [arm64], initramfs-tools (<< 0.120+deb8u2) [arm64]
 Conflicts: linux-image-6.8.4-arm64
-Description: Linux 6.7 for 64-bit ARMv8 machines
- The Linux kernel 6.7 and modules for use on 64-bit ARMv8 machines.
+Description: Linux 6.8 for 64-bit ARMv8 machines
+ The Linux kernel 6.8 and modules for use on 64-bit ARMv8 machines.
 
 Package: linux-image-6.8.4-arm64-dbg
 Architecture: arm64
@@ -1666,7 +1666,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: kernel-image, mmc-core-modules
 Kernel-Version: 6.8.4-arm64
 Description: Linux kernel image and core modules for the Lingmo installer
@@ -1679,7 +1679,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-modules, nic-extra-modules
 Depends: kernel-image-6.8.4-arm64-di, nic-shared-modules-6.8.4-arm64-di, i2c-modules-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di, mtd-core-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1692,7 +1692,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-wireless-modules
 Depends: kernel-image-6.8.4-arm64-di, nic-shared-modules-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di, crypto-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1705,7 +1705,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-shared-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di, i2c-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1718,7 +1718,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: usb-serial-modules
 Depends: kernel-image-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1730,7 +1730,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: ppp-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1742,7 +1742,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: cdrom-core-modules
 Depends: kernel-image-6.8.4-arm64-di, scsi-core-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1754,7 +1754,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: scsi-core-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1766,7 +1766,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: scsi-modules
 Depends: kernel-image-6.8.4-arm64-di, scsi-core-modules-6.8.4-arm64-di, cdrom-core-modules-6.8.4-arm64-di, ata-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1778,7 +1778,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: scsi-nic-modules
 Depends: scsi-modules-6.8.4-arm64-di, nic-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1790,7 +1790,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: loop-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1802,7 +1802,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: btrfs-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di, md-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1814,7 +1814,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: ext4-modules, ext2-modules, ext3-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1827,7 +1827,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: isofs-modules
 Depends: kernel-image-6.8.4-arm64-di, cdrom-core-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1839,7 +1839,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: jfs-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1851,7 +1851,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: xfs-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1863,7 +1863,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: fat-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1875,7 +1875,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: squashfs-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1887,7 +1887,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: udf-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di, cdrom-core-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1899,7 +1899,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: f2fs-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1911,7 +1911,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: md-modules
 Depends: kernel-image-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1923,7 +1923,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: multipath-modules
 Depends: kernel-image-6.8.4-arm64-di, md-modules-6.8.4-arm64-di, scsi-core-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1935,7 +1935,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: usb-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1947,7 +1947,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: usb-storage-modules
 Depends: kernel-image-6.8.4-arm64-di, scsi-core-modules-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1959,7 +1959,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: fb-modules
 Depends: kernel-image-6.8.4-arm64-di, i2c-modules-6.8.4-arm64-di, input-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1971,7 +1971,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: input-modules
 Depends: kernel-image-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di, i2c-modules-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1983,7 +1983,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: event-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -1995,7 +1995,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nic-usb-modules
 Depends: kernel-image-6.8.4-arm64-di, nic-shared-modules-6.8.4-arm64-di, nic-wireless-modules-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2007,7 +2007,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: standard
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: sata-modules
 Depends: kernel-image-6.8.4-arm64-di, scsi-core-modules-6.8.4-arm64-di, ata-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2019,7 +2019,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: i2c-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2031,7 +2031,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: crc-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2043,7 +2043,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: crypto-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2055,7 +2055,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: crypto-dm-modules
 Depends: kernel-image-6.8.4-arm64-di, md-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2067,7 +2067,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: efi-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2079,7 +2079,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: ata-modules
 Depends: kernel-image-6.8.4-arm64-di, scsi-core-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2092,7 +2092,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: mmc-modules
 Depends: kernel-image-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2105,7 +2105,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: nbd-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2118,7 +2118,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: speakup-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2130,7 +2130,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: uinput-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2142,7 +2142,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: sound-modules
 Depends: kernel-image-6.8.4-arm64-di, i2c-modules-6.8.4-arm64-di, usb-modules-6.8.4-arm64-di, crc-modules-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2154,7 +2154,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: leds-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2166,7 +2166,7 @@ Package-Type: udeb
 Architecture: arm64
 Section: debian-installer
 Priority: optional
-Build-Profiles: <pkg.linux.udeb-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
+Build-Profiles: <pkg.linux.udeb-unsigned-test-build !noudeb !pkg.linux.nokernel !pkg.linux.quick>
 Provides: mtd-core-modules
 Depends: kernel-image-6.8.4-arm64-di
 Kernel-Version: 6.8.4-arm64
@@ -2176,7 +2176,7 @@ Description: MTD core
 Package: linux-headers-6.8.4-cloud-arm64
 Architecture: arm64
 Build-Profiles: <!pkg.linux.nokernel>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-cloud-arm64 (= ${binary:Version}) | linux-image-6.8.4-cloud-arm64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-cloud-arm64 (= ${binary:Version}) | linux-image-6.8.4-cloud-arm64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-cloud-arm64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-cloud-arm64, generally used for building out-of-tree
@@ -2185,17 +2185,17 @@ Description: Header files for Linux 6.8.4-cloud-arm64
  modules that load into the kernel provided by the
  linux-image-6.8.4-cloud-arm64 package.
 
-Package: linux-image-6.8.4-cloud-arm64
+Package: linux-image-6.8.4-cloud-arm64-unsigned
 Architecture: arm64
 Build-Profiles: <!pkg.linux.nokernel>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [arm64] | linux-initramfs-tool [arm64]
 Recommends: firmware-linux-free, apparmor [arm64]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Replaces: linux-image-6.8.4-cloud-arm64
 Breaks: fwupdate (<< 12-7) [arm64], wireless-regdb (<< 2019.06.03-1~) [arm64], initramfs-tools (<< 0.120+deb8u2) [arm64]
 Conflicts: linux-image-6.8.4-cloud-arm64
-Description: Linux 6.7 for arm64 cloud
- The Linux kernel 6.7 and modules for use on cloud platforms supporting
+Description: Linux 6.8 for arm64 cloud
+ The Linux kernel 6.8 and modules for use on cloud platforms supporting
  arm64 virtual machines.
 
 Package: linux-image-6.8.4-cloud-arm64-dbg
@@ -2220,7 +2220,7 @@ Description: Debugging symbols for Linux cloud-arm64 configuration (meta-package
 Package: linux-headers-6.8.4-rt-arm64
 Architecture: arm64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-arm64 (= ${binary:Version}) | linux-image-6.8.4-rt-arm64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-arm64 (= ${binary:Version}) | linux-image-6.8.4-rt-arm64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-rt-arm64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-rt-arm64, generally used for building out-of-tree
@@ -2229,17 +2229,17 @@ Description: Header files for Linux 6.8.4-rt-arm64
  modules that load into the kernel provided by the
  linux-image-6.8.4-rt-arm64 package.
 
-Package: linux-image-6.8.4-rt-arm64
+Package: linux-image-6.8.4-rt-arm64-unsigned
 Architecture: arm64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [arm64] | linux-initramfs-tool [arm64]
 Recommends: firmware-linux-free, apparmor [arm64]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Replaces: linux-image-6.8.4-rt-arm64
 Breaks: fwupdate (<< 12-7) [arm64], wireless-regdb (<< 2019.06.03-1~) [arm64], initramfs-tools (<< 0.120+deb8u2) [arm64]
 Conflicts: linux-image-6.8.4-rt-arm64
-Description: Linux 6.7 for 64-bit ARMv8 machines, PREEMPT_RT
- The Linux kernel 6.7 and modules for use on 64-bit ARMv8 machines.
+Description: Linux 6.8 for 64-bit ARMv8 machines, PREEMPT_RT
+ The Linux kernel 6.8 and modules for use on 64-bit ARMv8 machines.
  .
  This kernel includes the PREEMPT_RT realtime patch set.
 
@@ -2265,7 +2265,7 @@ Description: Debugging symbols for Linux rt-arm64 configuration (meta-package)
 Package: linux-headers-6.8.4-rpi
 Architecture: armel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-rpi (= ${binary:Version}) | linux-image-6.8.4-rpi (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-rpi (= ${binary:Version}) | linux-image-6.8.4-rpi-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-rpi
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-rpi, generally used for building out-of-tree kernel
@@ -2278,10 +2278,10 @@ Architecture: armel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [armel] | linux-initramfs-tool [armel]
 Recommends: firmware-linux-free, apparmor [armel]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [armel], wireless-regdb (<< 2019.06.03-1~) [armel], initramfs-tools (<< 0.120+deb8u2) [armel]
-Description: Linux 6.7 for Raspberry Pi Zero, Zero W and 1
- The Linux kernel 6.7 and modules for use on Raspberry Pi Zero, Zero W and
+Description: Linux 6.8 for Raspberry Pi Zero, Zero W and 1
+ The Linux kernel 6.8 and modules for use on Raspberry Pi Zero, Zero W and
  1 based systems.
 
 Package: linux-image-rpi
@@ -2323,7 +2323,7 @@ Description: Debugging symbols for Linux rpi configuration (meta-package)
 Package: linux-headers-6.8.4-armmp
 Architecture: armhf
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-armmp (= ${binary:Version}) | linux-image-6.8.4-armmp (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-armmp (= ${binary:Version}) | linux-image-6.8.4-armmp-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-armmp
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-armmp, generally used for building out-of-tree kernel
@@ -2336,10 +2336,10 @@ Architecture: armhf
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [armhf] | linux-initramfs-tool [armhf]
 Recommends: firmware-linux-free, apparmor [armhf]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [armhf], wireless-regdb (<< 2019.06.03-1~) [armhf], initramfs-tools (<< 0.120+deb8u2) [armhf]
-Description: Linux 6.7 for ARMv7 multiplatform compatible SoCs
- The Linux kernel 6.7 and modules for use on ARMv7 multiplatform kernel.
+Description: Linux 6.8 for ARMv7 multiplatform compatible SoCs
+ The Linux kernel 6.8 and modules for use on ARMv7 multiplatform kernel.
  See https://wiki.debian.org/LingmoKernel/ARMMP for details of supported
  platforms.
 
@@ -2897,7 +2897,7 @@ Description: MTD driver modules
 Package: linux-headers-6.8.4-armmp-lpae
 Architecture: armhf
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-armmp-lpae (= ${binary:Version}) | linux-image-6.8.4-armmp-lpae (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-armmp-lpae (= ${binary:Version}) | linux-image-6.8.4-armmp-lpae-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-armmp-lpae
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-armmp-lpae, generally used for building out-of-tree
@@ -2911,10 +2911,10 @@ Architecture: armhf
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [armhf] | linux-initramfs-tool [armhf]
 Recommends: firmware-linux-free, apparmor [armhf]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [armhf], wireless-regdb (<< 2019.06.03-1~) [armhf], initramfs-tools (<< 0.120+deb8u2) [armhf]
-Description: Linux 6.7 for ARMv7 multiplatform compatible SoCs supporting LPAE
- The Linux kernel 6.7 and modules for use on ARMv7 multiplatform kernel
+Description: Linux 6.8 for ARMv7 multiplatform compatible SoCs supporting LPAE
+ The Linux kernel 6.8 and modules for use on ARMv7 multiplatform kernel
  supporting LPAE. See https://wiki.debian.org/LingmoKernel/ARMMP for
  details of supported platforms..
 
@@ -2959,7 +2959,7 @@ Description: Debugging symbols for Linux armmp-lpae configuration (meta-package)
 Package: linux-headers-6.8.4-rt-armmp
 Architecture: armhf
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-armmp (= ${binary:Version}) | linux-image-6.8.4-rt-armmp (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-armmp (= ${binary:Version}) | linux-image-6.8.4-rt-armmp-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-rt-armmp
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-rt-armmp, generally used for building out-of-tree
@@ -2973,10 +2973,10 @@ Architecture: armhf
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [armhf] | linux-initramfs-tool [armhf]
 Recommends: firmware-linux-free, apparmor [armhf]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [armhf], wireless-regdb (<< 2019.06.03-1~) [armhf], initramfs-tools (<< 0.120+deb8u2) [armhf]
-Description: Linux 6.7 for ARMv7 multiplatform compatible SoCs, PREEMPT_RT
- The Linux kernel 6.7 and modules for use on ARMv7 multiplatform kernel.
+Description: Linux 6.8 for ARMv7 multiplatform compatible SoCs, PREEMPT_RT
+ The Linux kernel 6.8 and modules for use on ARMv7 multiplatform kernel.
  See https://wiki.debian.org/LingmoKernel/ARMMP for details of supported
  platforms.
  .
@@ -3023,7 +3023,7 @@ Description: Debugging symbols for Linux rt-armmp configuration (meta-package)
 Package: linux-headers-6.8.4-parisc
 Architecture: hppa
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-parisc (= ${binary:Version}) | linux-image-6.8.4-parisc (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-parisc (= ${binary:Version}) | linux-image-6.8.4-parisc-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-parisc
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-parisc, generally used for building out-of-tree kernel
@@ -3037,10 +3037,10 @@ Architecture: hppa
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [hppa] | linux-initramfs-tool [hppa]
 Recommends: firmware-linux-free, apparmor [hppa]
-Suggests: linux-doc-6.7, debian-kernel-handbook, palo [hppa]
+Suggests: linux-doc-6.8, debian-kernel-handbook, palo [hppa]
 Breaks: fwupdate (<< 12-7) [hppa], wireless-regdb (<< 2019.06.03-1~) [hppa], initramfs-tools (<< 0.120+deb8u2) [hppa]
-Description: Linux 6.7 for 32-bit PA-RISC
- The Linux kernel 6.7 and modules for use on HP PA-RISC 32-bit systems with
+Description: Linux 6.8 for 32-bit PA-RISC
+ The Linux kernel 6.8 and modules for use on HP PA-RISC 32-bit systems with
  max 4 GB RAM.
 
 Package: linux-image-parisc
@@ -3497,7 +3497,7 @@ Description: Network Block Device modules
 Package: linux-headers-6.8.4-parisc64
 Architecture: hppa
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-parisc64 (= ${binary:Version}) | linux-image-6.8.4-parisc64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-parisc64 (= ${binary:Version}) | linux-image-6.8.4-parisc64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-parisc64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-parisc64, generally used for building out-of-tree
@@ -3511,10 +3511,10 @@ Architecture: hppa
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [hppa] | linux-initramfs-tool [hppa]
 Recommends: firmware-linux-free, apparmor [hppa]
-Suggests: linux-doc-6.7, debian-kernel-handbook, palo [hppa]
+Suggests: linux-doc-6.8, debian-kernel-handbook, palo [hppa]
 Breaks: fwupdate (<< 12-7) [hppa], wireless-regdb (<< 2019.06.03-1~) [hppa], initramfs-tools (<< 0.120+deb8u2) [hppa]
-Description: Linux 6.7 for 64-bit PA-RISC
- The Linux kernel 6.7 and modules for use on HP PA-RISC 64-bit systems with
+Description: Linux 6.8 for 64-bit PA-RISC
+ The Linux kernel 6.8 and modules for use on HP PA-RISC 64-bit systems with
  support for more than 4 GB RAM.
 
 Package: linux-image-parisc64
@@ -3970,7 +3970,7 @@ Description: Network Block Device modules
 Package: linux-headers-6.8.4-686
 Architecture: i386
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-686 (= ${binary:Version}) | linux-image-6.8.4-686 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-686 (= ${binary:Version}) | linux-image-6.8.4-686-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-686
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-686, generally used for building out-of-tree kernel
@@ -3983,10 +3983,10 @@ Architecture: i386
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [i386] | linux-initramfs-tool [i386]
 Recommends: firmware-linux-free, apparmor [i386]
-Suggests: linux-doc-6.7, debian-kernel-handbook, grub-pc [i386] | grub-efi-ia32 [i386] | extlinux [i386]
+Suggests: linux-doc-6.8, debian-kernel-handbook, grub-pc [i386] | grub-efi-ia32 [i386] | extlinux [i386]
 Breaks: fwupdate (<< 12-7) [i386], wireless-regdb (<< 2019.06.03-1~) [i386], initramfs-tools (<< 0.120+deb8u2) [i386]
-Description: Linux 6.7 for older PCs
- The Linux kernel 6.7 and modules for use on PCs with one or more
+Description: Linux 6.8 for older PCs
+ The Linux kernel 6.8 and modules for use on PCs with one or more
  processors not supporting PAE.
 
 Package: linux-image-686
@@ -4648,7 +4648,7 @@ Description: rfkill modules
 Package: linux-headers-6.8.4-686-pae
 Architecture: i386
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-686-pae (= ${binary:Version}) | linux-image-6.8.4-686-pae (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-686-pae (= ${binary:Version}) | linux-image-6.8.4-686-pae-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-686-pae
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-686-pae, generally used for building out-of-tree kernel
@@ -4662,10 +4662,10 @@ Architecture: i386
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [i386] | linux-initramfs-tool [i386]
 Recommends: firmware-linux-free, apparmor [i386]
-Suggests: linux-doc-6.7, debian-kernel-handbook, grub-pc [i386] | grub-efi-ia32 [i386] | extlinux [i386]
+Suggests: linux-doc-6.8, debian-kernel-handbook, grub-pc [i386] | grub-efi-ia32 [i386] | extlinux [i386]
 Breaks: fwupdate (<< 12-7) [i386], wireless-regdb (<< 2019.06.03-1~) [i386], initramfs-tools (<< 0.120+deb8u2) [i386]
-Description: Linux 6.7 for modern PCs
- The Linux kernel 6.7 and modules for use on PCs with one or more
+Description: Linux 6.8 for modern PCs
+ The Linux kernel 6.8 and modules for use on PCs with one or more
  processors supporting PAE.
  .
  This kernel requires PAE (Physical Address Extension). This feature is
@@ -5333,7 +5333,7 @@ Description: rfkill modules
 Package: linux-headers-6.8.4-rt-686-pae
 Architecture: i386
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-686-pae (= ${binary:Version}) | linux-image-6.8.4-rt-686-pae (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common-rt (= ${source:Version}), linux-image-6.8.4-rt-686-pae (= ${binary:Version}) | linux-image-6.8.4-rt-686-pae-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-rt-686-pae
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-rt-686-pae, generally used for building out-of-tree
@@ -5347,10 +5347,10 @@ Architecture: i386
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [i386] | linux-initramfs-tool [i386]
 Recommends: firmware-linux-free, apparmor [i386]
-Suggests: linux-doc-6.7, debian-kernel-handbook, grub-pc [i386] | grub-efi-ia32 [i386] | extlinux [i386]
+Suggests: linux-doc-6.8, debian-kernel-handbook, grub-pc [i386] | grub-efi-ia32 [i386] | extlinux [i386]
 Breaks: fwupdate (<< 12-7) [i386], wireless-regdb (<< 2019.06.03-1~) [i386], initramfs-tools (<< 0.120+deb8u2) [i386]
-Description: Linux 6.7 for modern PCs, PREEMPT_RT
- The Linux kernel 6.7 and modules for use on PCs with one or more
+Description: Linux 6.8 for modern PCs, PREEMPT_RT
+ The Linux kernel 6.8 and modules for use on PCs with one or more
  processors supporting PAE.
  .
  This kernel requires PAE (Physical Address Extension). This feature is
@@ -5399,7 +5399,7 @@ Description: Debugging symbols for Linux rt-686-pae configuration (meta-package)
 Package: linux-headers-6.8.4-loong64
 Architecture: loong64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-loong64 (= ${binary:Version}) | linux-image-6.8.4-loong64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-loong64 (= ${binary:Version}) | linux-image-6.8.4-loong64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-loong64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-loong64, generally used for building out-of-tree kernel
@@ -5413,10 +5413,10 @@ Architecture: loong64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [loong64] | linux-initramfs-tool [loong64]
 Recommends: firmware-linux-free, apparmor [loong64]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [loong64], wireless-regdb (<< 2019.06.03-1~) [loong64], initramfs-tools (<< 0.120+deb8u2) [loong64]
-Description: Linux 6.7 for 64-bit LoongArch platforms
- The Linux kernel 6.7 and modules for use on 64-bit LoongArch platforms.
+Description: Linux 6.8 for 64-bit LoongArch platforms
+ The Linux kernel 6.8 and modules for use on 64-bit LoongArch platforms.
 
 Package: linux-image-loong64
 Architecture: loong64
@@ -6017,7 +6017,7 @@ Description: rfkill modules
 Package: linux-headers-6.8.4-m68k
 Architecture: m68k
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-m68k (= ${binary:Version}) | linux-image-6.8.4-m68k (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-m68k (= ${binary:Version}) | linux-image-6.8.4-m68k-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-m68k
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-m68k, generally used for building out-of-tree kernel
@@ -6030,10 +6030,10 @@ Architecture: m68k
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [m68k] | linux-initramfs-tool [m68k]
 Recommends: firmware-linux-free, apparmor [m68k]
-Suggests: linux-doc-6.7, debian-kernel-handbook, vmelilo [m68k], fdutils [m68k]
+Suggests: linux-doc-6.8, debian-kernel-handbook, vmelilo [m68k], fdutils [m68k]
 Breaks: fwupdate (<< 12-7) [m68k], wireless-regdb (<< 2019.06.03-1~) [m68k], initramfs-tools (<< 0.120+deb8u2) [m68k]
-Description: Linux 6.7 for Motorola MC68020+ family
- The Linux kernel 6.7 and modules for use on Motorola MC68020+ family.
+Description: Linux 6.8 for Motorola MC68020+ family
+ The Linux kernel 6.8 and modules for use on Motorola MC68020+ family.
 
 Package: linux-image-m68k
 Architecture: m68k
@@ -6345,7 +6345,7 @@ Description: Network Block Device modules
 Package: linux-headers-6.8.4-4kc-malta
 Architecture: mips mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-4kc-malta (= ${binary:Version}) | linux-image-6.8.4-4kc-malta (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-4kc-malta (= ${binary:Version}) | linux-image-6.8.4-4kc-malta-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-4kc-malta
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-4kc-malta, generally used for building out-of-tree
@@ -6359,10 +6359,10 @@ Architecture: mips mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips mipsel] | linux-initramfs-tool [mips mipsel]
 Recommends: firmware-linux-free, apparmor [mips mipsel]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips mipsel], wireless-regdb (<< 2019.06.03-1~) [mips mipsel], initramfs-tools (<< 0.120+deb8u2) [mips], initramfs-tools (<< 0.120+deb8u2) [mipsel]
-Description: Linux 6.7 for MIPS Malta
- The Linux kernel 6.7 and modules for use on MIPS Malta boards.
+Description: Linux 6.8 for MIPS Malta
+ The Linux kernel 6.8 and modules for use on MIPS Malta boards.
 
 Package: linux-image-4kc-malta
 Architecture: mips mipsel
@@ -6939,7 +6939,7 @@ Description: sound support
 Package: linux-headers-6.8.4-mips32r2eb
 Architecture: mips
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips32r2eb (= ${binary:Version}) | linux-image-6.8.4-mips32r2eb (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips32r2eb (= ${binary:Version}) | linux-image-6.8.4-mips32r2eb-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-mips32r2eb
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-mips32r2eb, generally used for building out-of-tree
@@ -6953,10 +6953,10 @@ Architecture: mips
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips] | linux-initramfs-tool [mips]
 Recommends: firmware-linux-free, apparmor [mips]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips], wireless-regdb (<< 2019.06.03-1~) [mips], initramfs-tools (<< 0.120+deb8u2) [mips]
-Description: Linux 6.7 for MIPS Generic (mips32r2eb)
- The Linux kernel 6.7 and modules for use on MIPS Generic platform
+Description: Linux 6.8 for MIPS Generic (mips32r2eb)
+ The Linux kernel 6.8 and modules for use on MIPS Generic platform
  (mips32r2eb).
 
 Package: linux-image-mips32r2eb
@@ -7534,7 +7534,7 @@ Description: sound support
 Package: linux-headers-6.8.4-octeon
 Architecture: mips mips64 mips64el mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-octeon (= ${binary:Version}) | linux-image-6.8.4-octeon (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-octeon (= ${binary:Version}) | linux-image-6.8.4-octeon-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-octeon
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-octeon, generally used for building out-of-tree kernel
@@ -7548,10 +7548,10 @@ Architecture: mips mips64 mips64el mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips mips64 mips64el mipsel] | linux-initramfs-tool [mips mips64 mips64el mipsel]
 Recommends: firmware-linux-free, apparmor [mips mips64 mips64el mipsel]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips mips64 mips64el mipsel], wireless-regdb (<< 2019.06.03-1~) [mips mips64 mips64el mipsel], initramfs-tools (<< 0.120+deb8u2) [mips], initramfs-tools (<< 0.120+deb8u2) [mips64], initramfs-tools (<< 0.120+deb8u2) [mips64el], initramfs-tools (<< 0.120+deb8u2) [mipsel]
-Description: Linux 6.7 for Octeon
- The Linux kernel 6.7 and modules for use on Cavium Networks Octeon.
+Description: Linux 6.8 for Octeon
+ The Linux kernel 6.8 and modules for use on Cavium Networks Octeon.
 
 Package: linux-image-octeon
 Architecture: mips mips64 mips64el mipsel
@@ -8128,7 +8128,7 @@ Description: sound support
 Package: linux-headers-6.8.4-5kc-malta
 Architecture: mips64 mips64el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-5kc-malta (= ${binary:Version}) | linux-image-6.8.4-5kc-malta (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-5kc-malta (= ${binary:Version}) | linux-image-6.8.4-5kc-malta-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-5kc-malta
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-5kc-malta, generally used for building out-of-tree
@@ -8142,10 +8142,10 @@ Architecture: mips64 mips64el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips64 mips64el] | linux-initramfs-tool [mips64 mips64el]
 Recommends: firmware-linux-free, apparmor [mips64 mips64el]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips64 mips64el], wireless-regdb (<< 2019.06.03-1~) [mips64 mips64el], initramfs-tools (<< 0.120+deb8u2) [mips64], initramfs-tools (<< 0.120+deb8u2) [mips64el]
-Description: Linux 6.7 for MIPS Malta
- The Linux kernel 6.7 and modules for use on MIPS Malta boards.
+Description: Linux 6.8 for MIPS Malta
+ The Linux kernel 6.8 and modules for use on MIPS Malta boards.
 
 Package: linux-image-5kc-malta
 Architecture: mips64 mips64el
@@ -8722,7 +8722,7 @@ Description: sound support
 Package: linux-headers-6.8.4-mips64r2eb
 Architecture: mips64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips64r2eb (= ${binary:Version}) | linux-image-6.8.4-mips64r2eb (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips64r2eb (= ${binary:Version}) | linux-image-6.8.4-mips64r2eb-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-mips64r2eb
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-mips64r2eb, generally used for building out-of-tree
@@ -8736,10 +8736,10 @@ Architecture: mips64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips64] | linux-initramfs-tool [mips64]
 Recommends: firmware-linux-free, apparmor [mips64]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips64], wireless-regdb (<< 2019.06.03-1~) [mips64], initramfs-tools (<< 0.120+deb8u2) [mips64]
-Description: Linux 6.7 for MIPS Generic (mips64r2eb)
- The Linux kernel 6.7 and modules for use on MIPS Generic platform
+Description: Linux 6.8 for MIPS Generic (mips64r2eb)
+ The Linux kernel 6.8 and modules for use on MIPS Generic platform
  (mips64r2eb).
 
 Package: linux-image-mips64r2eb
@@ -9317,7 +9317,7 @@ Description: sound support
 Package: linux-headers-6.8.4-mips64r2el
 Architecture: mips64el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips64r2el (= ${binary:Version}) | linux-image-6.8.4-mips64r2el (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips64r2el (= ${binary:Version}) | linux-image-6.8.4-mips64r2el-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-mips64r2el
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-mips64r2el, generally used for building out-of-tree
@@ -9331,10 +9331,10 @@ Architecture: mips64el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips64el] | linux-initramfs-tool [mips64el]
 Recommends: firmware-linux-free, apparmor [mips64el]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips64el], wireless-regdb (<< 2019.06.03-1~) [mips64el], initramfs-tools (<< 0.120+deb8u2) [mips64el]
-Description: Linux 6.7 for MIPS Generic (mips64r2el)
- The Linux kernel 6.7 and modules for use on MIPS Generic platform
+Description: Linux 6.8 for MIPS Generic (mips64r2el)
+ The Linux kernel 6.8 and modules for use on MIPS Generic platform
  (mips64r2el).
 
 Package: linux-image-mips64r2el
@@ -9912,7 +9912,7 @@ Description: sound support
 Package: linux-headers-6.8.4-loongson-3
 Architecture: mips64el mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-loongson-3 (= ${binary:Version}) | linux-image-6.8.4-loongson-3 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-loongson-3 (= ${binary:Version}) | linux-image-6.8.4-loongson-3-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-loongson-3
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-loongson-3, generally used for building out-of-tree
@@ -9926,10 +9926,10 @@ Architecture: mips64el mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips64el mipsel] | linux-initramfs-tool [mips64el mipsel]
 Recommends: firmware-linux-free, apparmor [mips64el mipsel], pmon-update [mips64el mipsel]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips64el mipsel], wireless-regdb (<< 2019.06.03-1~) [mips64el mipsel], initramfs-tools (<< 0.120+deb8u2) [mips64el], initramfs-tools (<< 0.120+deb8u2) [mipsel]
-Description: Linux 6.7 for Loongson 3A/3B
- The Linux kernel 6.7 and modules for use on Loongson 3A or 3B based
+Description: Linux 6.8 for Loongson 3A/3B
+ The Linux kernel 6.8 and modules for use on Loongson 3A or 3B based
  systems (e.g.  from Loongson or Lemote).
 
 Package: linux-image-loongson-3
@@ -10507,7 +10507,7 @@ Description: sound support
 Package: linux-headers-6.8.4-mips64r6el
 Architecture: mips64r6el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips64r6el (= ${binary:Version}) | linux-image-6.8.4-mips64r6el (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips64r6el (= ${binary:Version}) | linux-image-6.8.4-mips64r6el-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-mips64r6el
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-mips64r6el, generally used for building out-of-tree
@@ -10521,10 +10521,10 @@ Architecture: mips64r6el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mips64r6el] | linux-initramfs-tool [mips64r6el]
 Recommends: firmware-linux-free, apparmor [mips64r6el]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mips64r6el], wireless-regdb (<< 2019.06.03-1~) [mips64r6el], initramfs-tools (<< 0.120+deb8u2) [mips64r6el]
-Description: Linux 6.7 for MIPS Generic (mips64r6el)
- The Linux kernel 6.7 and modules for use on MIPS Generic platform
+Description: Linux 6.8 for MIPS Generic (mips64r6el)
+ The Linux kernel 6.8 and modules for use on MIPS Generic platform
  (mips64r6el).
 
 Package: linux-image-mips64r6el
@@ -11102,7 +11102,7 @@ Description: sound support
 Package: linux-headers-6.8.4-mips32r2el
 Architecture: mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips32r2el (= ${binary:Version}) | linux-image-6.8.4-mips32r2el (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-mips32r2el (= ${binary:Version}) | linux-image-6.8.4-mips32r2el-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-mips32r2el
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-mips32r2el, generally used for building out-of-tree
@@ -11116,10 +11116,10 @@ Architecture: mipsel
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [mipsel] | linux-initramfs-tool [mipsel]
 Recommends: firmware-linux-free, apparmor [mipsel]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [mipsel], wireless-regdb (<< 2019.06.03-1~) [mipsel], initramfs-tools (<< 0.120+deb8u2) [mipsel]
-Description: Linux 6.7 for MIPS Generic (mips32r2el)
- The Linux kernel 6.7 and modules for use on MIPS Generic platform
+Description: Linux 6.8 for MIPS Generic (mips32r2el)
+ The Linux kernel 6.8 and modules for use on MIPS Generic platform
  (mips32r2el).
 
 Package: linux-image-mips32r2el
@@ -11697,7 +11697,7 @@ Description: sound support
 Package: linux-headers-6.8.4-powerpc
 Architecture: powerpc
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc (= ${binary:Version}) | linux-image-6.8.4-powerpc (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc (= ${binary:Version}) | linux-image-6.8.4-powerpc-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-powerpc
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-powerpc, generally used for building out-of-tree kernel
@@ -11711,10 +11711,10 @@ Architecture: powerpc
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [powerpc] | linux-initramfs-tool [powerpc]
 Recommends: firmware-linux-free, apparmor [powerpc]
-Suggests: linux-doc-6.7, debian-kernel-handbook, mkvmlinuz [powerpc], grub-ieee1275 [powerpc]
+Suggests: linux-doc-6.8, debian-kernel-handbook, mkvmlinuz [powerpc], grub-ieee1275 [powerpc]
 Breaks: fwupdate (<< 12-7) [powerpc], wireless-regdb (<< 2019.06.03-1~) [powerpc], initramfs-tools (<< 0.120+deb8u2) [powerpc]
-Description: Linux 6.7 for uniprocessor 32-bit PowerPC
- The Linux kernel 6.7 and modules for use on uniprocessor 32-bit PowerPC.
+Description: Linux 6.8 for uniprocessor 32-bit PowerPC
+ The Linux kernel 6.8 and modules for use on uniprocessor 32-bit PowerPC.
 
 Package: linux-image-powerpc
 Architecture: powerpc
@@ -12302,7 +12302,7 @@ Description: uinput support
 Package: linux-headers-6.8.4-powerpc-smp
 Architecture: powerpc
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc-smp (= ${binary:Version}) | linux-image-6.8.4-powerpc-smp (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc-smp (= ${binary:Version}) | linux-image-6.8.4-powerpc-smp-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-powerpc-smp
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-powerpc-smp, generally used for building out-of-tree
@@ -12316,10 +12316,10 @@ Architecture: powerpc
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [powerpc] | linux-initramfs-tool [powerpc]
 Recommends: firmware-linux-free, apparmor [powerpc]
-Suggests: linux-doc-6.7, debian-kernel-handbook, mkvmlinuz [powerpc], grub-ieee1275 [powerpc]
+Suggests: linux-doc-6.8, debian-kernel-handbook, mkvmlinuz [powerpc], grub-ieee1275 [powerpc]
 Breaks: fwupdate (<< 12-7) [powerpc], wireless-regdb (<< 2019.06.03-1~) [powerpc], initramfs-tools (<< 0.120+deb8u2) [powerpc]
-Description: Linux 6.7 for multiprocessor 32-bit PowerPC
- The Linux kernel 6.7 and modules for use on multiprocessor 32-bit PowerPC.
+Description: Linux 6.8 for multiprocessor 32-bit PowerPC
+ The Linux kernel 6.8 and modules for use on multiprocessor 32-bit PowerPC.
 
 Package: linux-image-powerpc-smp
 Architecture: powerpc
@@ -12360,7 +12360,7 @@ Description: Debugging symbols for Linux powerpc-smp configuration (meta-package
 Package: linux-headers-6.8.4-powerpc64
 Architecture: powerpc ppc64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc64 (= ${binary:Version}) | linux-image-6.8.4-powerpc64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc64 (= ${binary:Version}) | linux-image-6.8.4-powerpc64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-powerpc64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-powerpc64, generally used for building out-of-tree
@@ -12374,10 +12374,10 @@ Architecture: powerpc ppc64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [powerpc ppc64] | linux-initramfs-tool [powerpc ppc64]
 Recommends: firmware-linux-free, apparmor [powerpc ppc64]
-Suggests: linux-doc-6.7, debian-kernel-handbook, mkvmlinuz [powerpc ppc64], grub-ieee1275 [powerpc ppc64]
+Suggests: linux-doc-6.8, debian-kernel-handbook, mkvmlinuz [powerpc ppc64], grub-ieee1275 [powerpc ppc64]
 Breaks: fwupdate (<< 12-7) [powerpc ppc64], wireless-regdb (<< 2019.06.03-1~) [powerpc ppc64], initramfs-tools (<< 0.120+deb8u2) [powerpc], initramfs-tools (<< 0.120+deb8u2) [ppc64]
-Description: Linux 6.7 for 64-bit PowerPC
- The Linux kernel 6.7 and modules for use on 64-bit PowerPC.
+Description: Linux 6.8 for 64-bit PowerPC
+ The Linux kernel 6.8 and modules for use on 64-bit PowerPC.
 
 Package: linux-image-powerpc64
 Architecture: powerpc ppc64
@@ -13017,7 +13017,7 @@ Description: Apple powermac fancontrol modules
 Package: linux-headers-6.8.4-powerpc64le
 Architecture: ppc64el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc64le (= ${binary:Version}) | linux-image-6.8.4-powerpc64le (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-powerpc64le (= ${binary:Version}) | linux-image-6.8.4-powerpc64le-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-powerpc64le
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-powerpc64le, generally used for building out-of-tree
@@ -13031,10 +13031,10 @@ Architecture: ppc64el
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [ppc64el] | linux-initramfs-tool [ppc64el]
 Recommends: firmware-linux-free, apparmor [ppc64el]
-Suggests: linux-doc-6.7, debian-kernel-handbook, mkvmlinuz [ppc64el], grub-ieee1275 [ppc64el]
+Suggests: linux-doc-6.8, debian-kernel-handbook, mkvmlinuz [ppc64el], grub-ieee1275 [ppc64el]
 Breaks: fwupdate (<< 12-7) [ppc64el], wireless-regdb (<< 2019.06.03-1~) [ppc64el], initramfs-tools (<< 0.120+deb8u2) [ppc64el]
-Description: Linux 6.7 for Little-endian 64-bit PowerPC
- The Linux kernel 6.7 and modules for use on Little-endian 64-bit PowerPC.
+Description: Linux 6.8 for Little-endian 64-bit PowerPC
+ The Linux kernel 6.8 and modules for use on Little-endian 64-bit PowerPC.
 
 Package: linux-image-powerpc64le
 Architecture: ppc64el
@@ -13590,7 +13590,7 @@ Description: Apple powermac fancontrol modules
 Package: linux-headers-6.8.4-riscv64
 Architecture: riscv64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-riscv64 (= ${binary:Version}) | linux-image-6.8.4-riscv64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-riscv64 (= ${binary:Version}) | linux-image-6.8.4-riscv64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-riscv64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-riscv64, generally used for building out-of-tree kernel
@@ -13604,10 +13604,10 @@ Architecture: riscv64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [riscv64] | linux-initramfs-tool [riscv64]
 Recommends: firmware-linux-free, apparmor [riscv64]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [riscv64], wireless-regdb (<< 2019.06.03-1~) [riscv64], initramfs-tools (<< 0.120+deb8u2) [riscv64]
-Description: Linux 6.7 for 64-bit RISC-V platforms
- The Linux kernel 6.7 and modules for use on 64-bit RISC-V platforms.
+Description: Linux 6.8 for 64-bit RISC-V platforms
+ The Linux kernel 6.8 and modules for use on 64-bit RISC-V platforms.
 
 Package: linux-image-riscv64
 Architecture: riscv64
@@ -14149,7 +14149,7 @@ Description: MTD core
 Package: linux-headers-6.8.4-s390x
 Architecture: s390x
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-s390x (= ${binary:Version}) | linux-image-6.8.4-s390x (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-s390x (= ${binary:Version}) | linux-image-6.8.4-s390x-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-s390x
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-s390x, generally used for building out-of-tree kernel
@@ -14162,10 +14162,10 @@ Architecture: s390x
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [s390x] | linux-initramfs-tool [s390x]
 Recommends: firmware-linux-free, apparmor [s390x]
-Suggests: linux-doc-6.7, debian-kernel-handbook, s390-tools [s390x]
+Suggests: linux-doc-6.8, debian-kernel-handbook, s390-tools [s390x]
 Breaks: fwupdate (<< 12-7) [s390x], wireless-regdb (<< 2019.06.03-1~) [s390x], initramfs-tools (<< 0.120+deb8u2) [s390x]
-Description: Linux 6.7 for IBM zSeries
- The Linux kernel 6.7 and modules for use on IBM zSeries.
+Description: Linux 6.8 for IBM zSeries
+ The Linux kernel 6.8 and modules for use on IBM zSeries.
 
 Package: linux-image-s390x
 Architecture: s390x
@@ -14477,7 +14477,7 @@ Description: optional dasd DIAG support
 Package: linux-headers-6.8.4-sh7751r
 Architecture: sh4
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sh7751r (= ${binary:Version}) | linux-image-6.8.4-sh7751r (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sh7751r (= ${binary:Version}) | linux-image-6.8.4-sh7751r-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-sh7751r
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-sh7751r, generally used for building out-of-tree kernel
@@ -14491,10 +14491,10 @@ Architecture: sh4
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [sh4] | linux-initramfs-tool [sh4]
 Recommends: firmware-linux-free, apparmor [sh4]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [sh4], wireless-regdb (<< 2019.06.03-1~) [sh4], initramfs-tools (<< 0.120+deb8u2) [sh4]
-Description: Linux 6.7 for sh7751r
- The Linux kernel 6.7 and modules for use on Renesas SH7751R R2D plus
+Description: Linux 6.8 for sh7751r
+ The Linux kernel 6.8 and modules for use on Renesas SH7751R R2D plus
  board.
 
 Package: linux-image-sh7751r
@@ -14913,7 +14913,7 @@ Description: sound support
 Package: linux-headers-6.8.4-sh7785lcr
 Architecture: sh4
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sh7785lcr (= ${binary:Version}) | linux-image-6.8.4-sh7785lcr (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sh7785lcr (= ${binary:Version}) | linux-image-6.8.4-sh7785lcr-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-sh7785lcr
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-sh7785lcr, generally used for building out-of-tree
@@ -14927,10 +14927,10 @@ Architecture: sh4
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [sh4] | linux-initramfs-tool [sh4]
 Recommends: firmware-linux-free, apparmor [sh4], u-boot-tools [sh4]
-Suggests: linux-doc-6.7, debian-kernel-handbook
+Suggests: linux-doc-6.8, debian-kernel-handbook
 Breaks: fwupdate (<< 12-7) [sh4], wireless-regdb (<< 2019.06.03-1~) [sh4], initramfs-tools (<< 0.120+deb8u2) [sh4]
-Description: Linux 6.7 for sh7785lcr
- The Linux kernel 6.7 and modules for use on Renesas SH7785 reference
+Description: Linux 6.8 for sh7785lcr
+ The Linux kernel 6.8 and modules for use on Renesas SH7785 reference
  board.
 
 Package: linux-image-sh7785lcr
@@ -15374,7 +15374,7 @@ Description: sound support
 Package: linux-headers-6.8.4-sparc64
 Architecture: sparc64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sparc64 (= ${binary:Version}) | linux-image-6.8.4-sparc64 (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sparc64 (= ${binary:Version}) | linux-image-6.8.4-sparc64-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-sparc64
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-sparc64, generally used for building out-of-tree kernel
@@ -15388,10 +15388,10 @@ Architecture: sparc64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [sparc64] | linux-initramfs-tool [sparc64]
 Recommends: firmware-linux-free, apparmor [sparc64]
-Suggests: linux-doc-6.7, debian-kernel-handbook, fdutils [sparc64], grub-ieee1275 [sparc64]
+Suggests: linux-doc-6.8, debian-kernel-handbook, fdutils [sparc64], grub-ieee1275 [sparc64]
 Breaks: fwupdate (<< 12-7) [sparc64], wireless-regdb (<< 2019.06.03-1~) [sparc64], initramfs-tools (<< 0.120+deb8u2) [sparc64]
-Description: Linux 6.7 for uniprocessor 64-bit UltraSPARC
- The Linux kernel 6.7 and modules for use on uniprocessor 64-bit
+Description: Linux 6.8 for uniprocessor 64-bit UltraSPARC
+ The Linux kernel 6.8 and modules for use on uniprocessor 64-bit
  UltraSPARC.
 
 Package: linux-image-sparc64
@@ -15835,7 +15835,7 @@ Description: Network Block Device modules
 Package: linux-headers-6.8.4-sparc64-smp
 Architecture: sparc64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
-Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sparc64-smp (= ${binary:Version}) | linux-image-6.8.4-sparc64-smp (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
+Depends: linux-headers-6.8.4-common (= ${source:Version}), linux-image-6.8.4-sparc64-smp (= ${binary:Version}) | linux-image-6.8.4-sparc64-smp-unsigned (= ${binary:Version}), linux-kbuild-6.8.4, ${misc:Depends}, gcc-13
 Description: Header files for Linux 6.8.4-sparc64-smp
  This package provides the architecture-specific kernel header files for
  Linux kernel 6.8.4-sparc64-smp, generally used for building out-of-tree
@@ -15849,10 +15849,10 @@ Architecture: sparc64
 Build-Profiles: <!pkg.linux.nokernel !pkg.linux.quick>
 Depends: kmod, linux-base (>= 4.3~), ${misc:Depends}, initramfs-tools (>= 0.120+deb8u2) [sparc64] | linux-initramfs-tool [sparc64]
 Recommends: firmware-linux-free, apparmor [sparc64]
-Suggests: linux-doc-6.7, debian-kernel-handbook, fdutils [sparc64], grub-ieee1275 [sparc64]
+Suggests: linux-doc-6.8, debian-kernel-handbook, fdutils [sparc64], grub-ieee1275 [sparc64]
 Breaks: fwupdate (<< 12-7) [sparc64], wireless-regdb (<< 2019.06.03-1~) [sparc64], initramfs-tools (<< 0.120+deb8u2) [sparc64]
-Description: Linux 6.7 for multiprocessor 64-bit UltraSPARC
- The Linux kernel 6.7 and modules for use on multiprocessor 64-bit
+Description: Linux 6.8 for multiprocessor 64-bit UltraSPARC
+ The Linux kernel 6.8 and modules for use on multiprocessor 64-bit
  UltraSPARC.
 
 Package: linux-image-sparc64-smp
@@ -15891,4 +15891,3 @@ Depends: linux-image-6.8.4-sparc64-smp-dbg (= ${binary:Version}), ${misc:Depends
 Description: Debugging symbols for Linux sparc64-smp configuration (meta-package)
  This package depends on the detached debugging symbols for the latest
  Linux kernel sparc64-smp configuration.
-
