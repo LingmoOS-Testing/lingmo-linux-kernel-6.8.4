@@ -23,8 +23,9 @@ jobs:
         remove-dotnet: 'true'
         remove-android: 'true'
 
-    - uses: actions/checkout@v3
-      path: 'linux'
+    - uses: actions/checkout@v4
+      with:
+        path: 'linux'
 
     - name: Set up Debian container
       uses: addnab/docker-run-action@v3
