@@ -34,11 +34,10 @@ jobs:
         options: -v ${{ github.workspace }}:/work
         run: |
           cd /work/linux
-          apt update; apt install -y --no-install-recommends fakeroot build-essential git wget openssl libssl-dev ca-certificates libncurses-dev zstd xz-utils flex libelf-dev bison bc debhelper rsync kmod cpio gpg pahole python3 devscripts 
+          apt update; apt install -y --no-install-recommends lsb-release fakeroot build-essential git wget openssl libssl-dev ca-certificates libncurses-dev zstd xz-utils flex libelf-dev bison bc debhelper rsync kmod cpio gpg pahole python3 devscripts 
           apt build-dep -y ./
           git config --global --add safe.directory /work/linux
-          CPU_CORES=$(($(grep -c processor < /proc/cpuinfo)*2))
-          make deb-pkg -j"$CPU_CORES"
+          debuild -us -uc -b
           cd /work
           mkdir assets
           mv ./*.deb assets/
